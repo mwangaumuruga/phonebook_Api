@@ -1,11 +1,12 @@
-import {  addUserToGroup } from "../controllers/userController.js"
+import { addUserToGroup } from "../controllers/userController.js";
 
 
 const usersRouters = (app) => {
     app.route('/users')
-    .post(addUserToGroup);
+        .post(addUserToGroup);
+    app.route("/users/:id")
+        .delete(deleteUser);
 
-   
 
 };
 
