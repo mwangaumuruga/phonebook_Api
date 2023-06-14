@@ -44,4 +44,40 @@ export const deleteUser = async (req, res) => {
   }
 }
 
+// edit user 
+export const editUser = async (req, res) => {
+  let connection;
+  try {
+    const {user_id} =  req.params;
+    const { full_name, email, phone_number, home_address, work_number } = req.body;
+
+    connection = await sql.connect(config.sql);
+    const result = await connection.request().query(`
+      UPDATE users
+      SET full_name = '${full_name}',
+          email = '${email}',
+          phone_number = '${phone_number}',
+          home_address = '${home_address}',
+          work_number = '${work_number}'
+      WHERE user_id = ${user_id};
+    `);
+
+    res.send(result);
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while editing the user' });
+  } finally {
+    if (connection) {
+      connection.close();
+    }
+  }
+};
+
+
+
+
+
+
+
+
+
 
