@@ -1,0 +1,22 @@
+{
+  "name": "phonebook_Api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/KingPrince001/phonebook_Api.git",
+  "author": "KingPrince001 <johnchege2445@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=18.16.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "mssql": "^9.1.1"
+  }
+}
