@@ -44,4 +44,20 @@ export const deleteUser = async (req, res) => {
   }
 }
 
+// get all users 
+export const getUsers = async (req, res) => {
+    let connection; 
+    try {
+      connection = await sql.connect(config.sql);
+      const result = await connection.request().query('SELECT * FROM users');
+      res.send(result);
+    } catch (error) {
+      res.status(500).json({ error: 'An error occurred while retrieving users' });
+    } finally {
+      if (connection) {
+        connection.close();
+      }
+    }
+  };
+
 
